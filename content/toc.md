@@ -14,6 +14,7 @@ Luca Ferroni <luca@befair.it>
 * unittest e py.test
 
 ## PRATICA:  
+
 * implementazione inserimento anagrafica,  
 * test driven development: il mio primo test 
 * l'utente fornisce i dati in input, il programma effettua un calcolo basandosi su 

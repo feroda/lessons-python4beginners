@@ -7,19 +7,21 @@
 * Un solo modo ovvio per fare una cosa
 * Imperativo, ad oggetti e funzionale
 * I miglioramenti vengono inseriti dai PEP
-
+* [La libreria python sempre sotto il cuscino!](http://docs.python.org/lib/) TODO
 
 ## WARNING
 
 * Non c'entra nulla con il serpente
 * Ma deriva dal Monthy Python Flying Circus
-* Ad esempio:
+* TODO Ad esempio:
   - aaaaa
   - bbbbb
   - ccccc
 
 
-## Il mio primo codice python
+## E ora... "The hello tour!"
+
+### Il mio primo codice python
 
     1 # This is hello_who.py
     2
@@ -29,7 +31,7 @@
     6 if __name__ == "__main__":
     7     hello("mamma")
 
-## IPython compagno di sviluppo
+### IPython compagno di sviluppo
 
     $ ipython
 
@@ -61,7 +63,7 @@
     In [1]: import this
 
 
-## Inspect!
+### Inspect!
 
     1 # This is hello_who.py                # <-- i commenti iniziano con `#`
     2                                       #     possono essere all'inizio o a fine riga
@@ -71,7 +73,7 @@
     6 if __name__ == "__main__":            # <-- [verifica di esecuzione e non di import](https://docs.python.org/2/library/__main__.html)
     7     hello("mamma")                    # <-- invoco la funzione con il valore
 
-## Utilizzo come modulo
+### Utilizzo come modulo
 
     $ ipython
 
@@ -90,7 +92,7 @@
     Hello system!
 
 
-## La leggibilità conta
+### La leggibilità conta
 
 * Le linee guida di stile sono nel [PEP 8](https://www.python.org/dev/peps/pep-0008/)
   * ogni azienda può averne di differenti
@@ -112,7 +114,14 @@ Mie convenzioni:
 * classi CamelCase e funzioni + variabili minuscole con _
 * il codice è scritto in inglese, in particolare i nomi delle variabili
 
-## Il mio secondo codice python
+### YAPF e Iflake8 i compagni "stilosi"
+
+* YAPF: Yet Another Python Formatter
+* IFlake8: verifica stile secondo PEP 8 (configurabile)
+
+### Il mio secondo codice python
+
+Aggiungiamo encoding del file e documentazione della funzione
 
      1 # -*- coding: utf-8 -*-               # <-- specifica dell'encoding del file se != ASCII
      2
@@ -130,36 +139,50 @@ Mie convenzioni:
     14     hello("mamma")
 
 
-## Il mio terzo codice python
+### Il mio terzo codice python
 
-     1 # -*- coding: utf-8 -*-
-     2
-     3 # This is hello_who.py
-     4 import sys                            # <-- importo un modulo
-     4
-     5 def hello(who='world'):               # <-- valore di default
-     6     """
-     7     Say hello to someone.
-     8
-     9        :param str who: The person to say Hello
-    10         :type priority: integer or None
-    11         :return: the message id
-    12         :rtype: int
-    13         :raises ValueError: if the message_body exceeds 160 characters
-    14         :raises TypeError: if the message_body is not a basestring
-    15       """
-           try:
-               print("Hello {}!".format(who))
-           except ValueError as e:
-               print("Il parametro `who` deve essere una stringa")
-               sys.exit(100)
-    7
-    8 if __name__ == "__main__":
-    9     hello("mamma")
+Poi separiamo le funzioni, inseriamo le eccezioni, e un controllo:
 
+    `../src/hello/hello_who_3.py`
 
-## Altri compagni di sviluppo
+### E testiamo con il compagno "testardo"
 
-* yapf
 * py.test
 
+### Fiato alle trombe: sequenze di hello!
+
+Parametri di input, random, liste e cicli
+
+    ../src/hello/hello_who_4.py
+
+## Sintetizziamo con il tutorial python
+
+* [Control Flow](https://docs.python.org/2/tutorial/controlflow.html)
+* [Data Structures](https://docs.python.org/2/tutorial/datastructures.html)
+
+### Tipi di dati semplici
+
+* interi
+* float
+* Sequenze (mutabili o immutabili):
+    * stringhe
+    * liste: mutabile, slice, stringhe sono liste di caratteri
+    * tuple: lista immutabile (usualmente eterogenea)
+* set: immutabile non ordinato e senza ripetizioni
+* dizionari
+
+### Tipi di dati complessi
+
+* decimal.Decimal
+* datetime
+    * datetime
+    * date
+    * timedelta
+* collections
+    * namedtuple
+    * OrderedDict
+* queue
+
+### Funzione: passaggio per riferimento
+
+La differenza sta nel mutable o immutable
