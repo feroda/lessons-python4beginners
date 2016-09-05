@@ -1,0 +1,3 @@
+
+CLIENTI = {}
+FORNITORI = {}
