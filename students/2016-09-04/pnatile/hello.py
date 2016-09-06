@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
-
-def do_hello():
-    print(u"Hello world!")
+# funzione che saluta
+def do_hello(who="pippo"):
+    """
+    funzione che saluta
+    :param str who: a chi saluto
+    """
+    print("Hello {}".format(who))  # meglio format, la seconda istruzione antica
+    print("Hello %s" %who)
     tot = 1 + 2
     print(tot)
 	
