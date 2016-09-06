@@ -2,3 +2,4 @@ t
 *.pyc
 *.pyo
 .cache
+.vscode
