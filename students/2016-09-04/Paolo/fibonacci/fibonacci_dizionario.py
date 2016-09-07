@@ -26,6 +26,7 @@ def fib(x):
     
 
 if __name__ == "__main__":
-    print(fib(3))
+    choice = raw_input("Per quale input vuoi sapere il corrispondente fibonacci?")
+    print(fib(int(choice)))
     
     
