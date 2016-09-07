@@ -1,6 +1,20 @@
 # -*- coding: utf-8 -*-
 
 
+def verify_exceptions(start, end):
+	
+	if isinstance(start,basestring):
+		raise TypeError("Start input variable should be a number!")
+		
+	if isinstance(end,basestring):
+		raise TypeError("First input variable should be a number!")
+		
+	if start < 0:
+		raise Exception("Start number shoould be > 0")
+		
+	if start > end:
+		raise Exception("Start cannot be > than end")
+
 def run(start, end):
 	next = 0
 	second = 1
@@ -8,17 +22,7 @@ def run(start, end):
 	value = 0
 	first = 0
 	
-	if start < 0:
-		raise Exception("Start number shoould be > 0")
-		
-	if start > end:
-		raise Exception("Start cannot be > than end")
-	
-	if isinstance(start,basestring):
-		raise TypeError("Start input variable should be a number!")
-		
-	if isinstance(end,basestring):
-		raise TypeError("First input variable should be a number!")
+	verify_exceptions(start,end)
 	
 	while value <= end:
 		
