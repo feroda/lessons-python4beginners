@@ -1,25 +1,23 @@
 # -*- coding: utf-8 -*-
 
 import custom_exception
+import exception_handler
 
-	
 
 def verify_exceptions(start, end):
+
+	ex_handler = exception_handler.ExceptionHandler()
 	
-	if isinstance(start,basestring):
-		raise TypeError("Start input variable should be a number!")
-		
-	if isinstance(end,basestring):
-		raise TypeError("First input variable should be a number!")
-		
-	if start < 0:
-		raise custom_exception.NegativeNumberException("Start number shoould be > 0")
+	ex_handler.verifyNumberIsNotNegative(start)
+	ex_handler.verifyNumberIsNotAString(start)
+	ex_handler.verifyNumberIsNotAString(end)
+	ex_handler.isFirstNumberGreaterThanSecondNumber(start,end)
 		
 	if start > end:
-		raise custom_exception.NegativeNumberException("Start cannot be > than end")
+		raise custom_exception.InvalidNumberProvidedException("Start cannot be > than end")
 		
 
-def fill_fibonacci_array(array, end):
+def fill_fibonacci_array(fibonacci_list, end):
 	next = 0
 	second = 1
 	value = 0
@@ -29,10 +27,10 @@ def fill_fibonacci_array(array, end):
 		
 		if value <= 1:
 			next = value
-			array.append(next)
+			fibonacci_list.append(next)
 		elif value > 1:
 			next = first + second
-			array.append(next)
+			fibonacci_list.append(next)
 			first = second
 			second = next
 			
@@ -40,18 +38,14 @@ def fill_fibonacci_array(array, end):
 	
 
 def run(start, end):
-	next = 0
-	second = 1
-	array = []
-	value = 0
-	first = 0
+	fibonacci_list = []
 	
 	verify_exceptions(start,end)	
-	fill_fibonacci_array(array, end)
+	fill_fibonacci_array(fibonacci_list, end)
 	
-	print(array)
+	print(fibonacci_list)
 	
-	return array[start:]
+	return fibonacci_list[start:]
 		
 if __name__ == "__main__":
 	run(0,5)

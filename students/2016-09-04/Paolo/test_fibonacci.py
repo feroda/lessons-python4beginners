@@ -31,5 +31,5 @@ def test_input_end_must_be_number():
 		
 		
 def test_start_cannot_be_more_than_end():
-	with pytest.raises(custom_exception.NegativeNumberException):
+	with pytest.raises(custom_exception.InvalidNumberProvidedException):
 		fibonacci.run(7,5)
