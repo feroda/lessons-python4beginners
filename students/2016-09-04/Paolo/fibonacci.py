@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import custom_exception
 import exception_handler
 
 
@@ -12,9 +11,7 @@ def verify_exceptions(start, end):
 	ex_handler.verifyNumberIsNotAString(start)
 	ex_handler.verifyNumberIsNotAString(end)
 	ex_handler.isFirstNumberGreaterThanSecondNumber(start,end)
-		
-	if start > end:
-		raise custom_exception.InvalidNumberProvidedException("Start cannot be > than end")
+
 		
 
 def fill_fibonacci_array(fibonacci_list, end):

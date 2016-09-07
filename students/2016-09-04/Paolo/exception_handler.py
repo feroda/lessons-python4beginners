@@ -10,8 +10,8 @@ class ExceptionHandler:
 			
 	def verifyNumberIsNotAString(self, number):
 		if isinstance(number,basestring):
-			raise TypeError("Start input variable should be a number!")
+			raise TypeError("Input variable should be a number!")
 			
 	def isFirstNumberGreaterThanSecondNumber(self, first_number, second_number):
 		if first_number > second_number:
-			raise custom_exception.InvalidNumberProvidedException("Start cannot be > than end")
+			raise custom_exception.InvalidNumberProvidedException("First Number cannot be > than Second Number")
