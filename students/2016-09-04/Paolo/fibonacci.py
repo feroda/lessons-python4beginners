@@ -7,15 +7,22 @@ def run(first, end):
 	array = []
 	value = 0
 	
+	if first < 0:
+		raise Exception("First number shoould be > 0")
+	
+	if isinstance(first,basestring):
+		raise TypeError("First input variable should be a number!")
+		
+	if isinstance(end,basestring):
+		raise TypeError("First input variable should be a number!")
+	
 	while value <= end:
 		
 		if value <= 1:
 			next = value
-			print(next)
 			array.append(next)
 		elif value > 1:
 			next = first + second
-			print(next)
 			array.append(next)
 			first = second
 			second = next
