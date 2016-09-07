@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import custom_exception
+
+	
 
 def verify_exceptions(start, end):
 	
@@ -10,19 +13,17 @@ def verify_exceptions(start, end):
 		raise TypeError("First input variable should be a number!")
 		
 	if start < 0:
-		raise Exception("Start number shoould be > 0")
+		raise custom_exception.NegativeNumberException("Start number shoould be > 0")
 		
 	if start > end:
-		raise Exception("Start cannot be > than end")
+		raise custom_exception.NegativeNumberException("Start cannot be > than end")
+		
 
-def run(start, end):
+def fill_fibonacci_array(array, end):
 	next = 0
 	second = 1
-	array = []
 	value = 0
 	first = 0
-	
-	verify_exceptions(start,end)
 	
 	while value <= end:
 		
@@ -36,6 +37,17 @@ def run(start, end):
 			second = next
 			
 		value += 1
+	
+
+def run(start, end):
+	next = 0
+	second = 1
+	array = []
+	value = 0
+	first = 0
+	
+	verify_exceptions(start,end)	
+	fill_fibonacci_array(array, end)
 	
 	print(array)
 	

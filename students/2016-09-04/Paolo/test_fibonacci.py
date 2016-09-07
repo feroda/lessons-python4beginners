@@ -1,6 +1,7 @@
 import pytest
 
 import fibonacci
+import custom_exception
 
 def test_fibonacci():
 	print("Test Fibonacci 1 started")
@@ -17,7 +18,7 @@ def test_fibonacci():
 def test_exception_when_start_is_negative():
 	print("Test Fibonacci exception fired when start number is minor than zero")
 	
-	with pytest.raises(Exception):
+	with pytest.raises(custom_exception.NegativeNumberException):
 		fibonacci.run(-1, 5)
 		
 def test_input_start_must_be_number():
@@ -30,5 +31,5 @@ def test_input_end_must_be_number():
 		
 		
 def test_start_cannot_be_more_than_end():
-	with pytest.raises(Exception):
+	with pytest.raises(custom_exception.NegativeNumberException):
 		fibonacci.run(7,5)
