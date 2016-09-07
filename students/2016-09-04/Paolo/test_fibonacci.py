@@ -14,16 +14,21 @@ def test_fibonacci():
 	assert array[4] == 3
 	assert array[5] == 5
 	
-def test_exception():
+def test_exception_when_start_is_negative():
 	print("Test Fibonacci exception fired when start number is minor than zero")
 	
 	with pytest.raises(Exception):
 		fibonacci.run(-1, 5)
 		
-def test_inputfirst_mustbe_number():
+def test_input_start_must_be_number():
 	with pytest.raises(TypeError):
 		fibonacci.run("ciao", 5)
 		
-def test_inputend_mustbe_number():
+def test_input_end_must_be_number():
 	with pytest.raises(TypeError):
 		fibonacci.run(0, "Ciao")
+		
+		
+def test_start_cannot_be_more_than_end():
+	with pytest.raises(Exception):
+		fibonacci.run(7,5)
