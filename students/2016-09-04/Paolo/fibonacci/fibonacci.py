@@ -17,21 +17,20 @@ def verify_exceptions(start, end):
 def fill_fibonacci_array(fibonacci_list, end):
 	next = 0
 	second = 1
-	value = 0
+	count = 0
 	first = 0
 	
-	while value <= end:
+	while count <= end:
 		
-		if value <= 1:
-			next = value
-			fibonacci_list.append(next)
-		elif value > 1:
+		if count <= 1:
+			fibonacci_list.append(count)
+		elif count > 1:
 			next = first + second
 			fibonacci_list.append(next)
 			first = second
 			second = next
 			
-		value += 1
+		count += 1
 	
 
 def run(start, end):
