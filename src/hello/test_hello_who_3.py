@@ -16,3 +16,4 @@ def test_hello_to_not_string():
 def test_hello_to_not_string_forced():
     msg = compose_hello(1, force=True)
     assert msg == "Hello 1!"
+

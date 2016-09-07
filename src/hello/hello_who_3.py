@@ -4,21 +4,20 @@
 import sys                            # <-- importo un modulo
 
 
-def compose_hello(who, force=True):   # <-- valore di default
+def compose_hello(who, force=False):   # <-- valore di default
     """
     Get the hello message.
 
         :param str who: the person to say Hello
         :param bool force: force message for non-string input
- TODO       :type priority: integer or None
         :return: the message
         :rtype: str
         :raises ValueError: who is not a string
     """
     
     try:                                     # <-- gestione eccezioni `Duck Typing` 
-        messsage = "Hello " + who + "!"
-    except ValueError:                       # <-- eccezione specifica
+        message = "Hello " + who + "!"
+    except TypeError:                       # <-- eccezione specifica
     # except ValueError as e:                       # <-- eccezione specifica su parametro e
         print("[WARNING] Il parametro `who` dovrebbe essere una stringa")
         if force:                            # <-- controllo "if"
