@@ -96,10 +96,12 @@ def print_people_by_city(list_input):
             print("  " + e + "\n")
         
     
-
+def compute_annual_salary(person):
+    person["annual"] = person["salary"] * 13
+    
 def print_people_with_annual_salary(list_input):
     for p in list_input:
-        p["annual"] = p["salary"] / 13
+        compute_annual_salary(p)
     
     for elem in list_input:
         print(elem) 
