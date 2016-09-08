@@ -16,10 +16,10 @@ def to_csv_string(dictionary):
         return f.getvalue()
 
 FILE_HANDLER_GENERATOR = {
-    'f' : {'ext': 'txt',    'func': str},
-    'j' : {'ext': 'json',   'func': json.dumps},
-    'c' : {'ext': 'csv',    'func': to_csv_string},
-    'x' : {'ext': 'xml',    'func': xml},
+    'f' : {'ext': 'txt',    'func': str, 'parameters': {}},
+    'j' : {'ext': 'json',   'func': json.dumps, 'parameters': {'indent':4}},
+    'c' : {'ext': 'csv',    'func': to_csv_string, 'parameters': {}},
+    'x' : {'ext': 'xml',    'func': xml, 'parameters': {}},
     }
 
 
@@ -39,7 +39,7 @@ def save_to_file(dictionary, file_type, filename):
     handler = FILE_HANDLER_GENERATOR[file_type]
 
     with open('{}.{}'.format(filename, handler['ext']), 'wb') as file:
-        file.write(handler['func'](dictionary))
+        file.write(handler['func'](dictionary, **handler['parameters']))
 
 def should_save(people, filename='PEOPLE'):
     file_format = raw_input('formato salvataggio? [[f]ile|[j]son|[x]ml|[c]sv|NO]').lower()
@@ -60,7 +60,23 @@ def main():
 
     return PEOPLE
 
+def calculate_annual(people):
+    # anche la tredicesima!!
+    #people = map(lambda p: p['annual'] = p['salary'] * 13, people)
+
+    for p in people:
+        p['annual'] = p['salary'] * 13
+
+def group_by_city(people):
+    grouped = {}
+    for p in people:
+        if(not grouped.has_key(p['city'])):
+            grouped[p['city']] = []
+        grouped[p['city']].append(p)
+    
+    return grouped
+
 if __name__ == "__main__":
-    print sys.argv
     people = main() 
+    calculate_annual(people)
     should_save(people)
