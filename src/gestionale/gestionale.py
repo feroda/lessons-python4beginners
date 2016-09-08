@@ -60,6 +60,15 @@ def get_json(data):
 #         f.write(export_data)
 
 
+def compute_annual_single(p):
+    p["annual"] = p["salary"]*13
+
+
+def compute_annual_all(people):
+    for p in people:
+        compute_annual_single(p)
+
+
 import csv
 def save_csv(list_of_dicts, f):
 
@@ -93,6 +102,7 @@ def save(list_of_dicts, fname="data.txt"):
 def main_and_save(argv):
 
     PEOPLE = main()
+    compute_annual_all(PEOPLE)
 
     if len(argv) > 1:
         save(PEOPLE, fname=argv[1])
