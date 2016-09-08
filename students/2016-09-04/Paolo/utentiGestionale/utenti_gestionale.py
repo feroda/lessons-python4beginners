@@ -4,6 +4,7 @@ import csv
 import json
 import xml.etree.cElementTree as ET
 import sys
+from collections import defaultdict
 
 PEOPLE = []
 
@@ -74,10 +75,31 @@ def save(list_of_dict, input_args):
         
     write_on_xml(list_of_dict)
     
+    
+def print_people_by_city(list_input):
+    print("People by City..")
+    
+    res = {}
+    
+    for elem in list_input:
+        res[elem["city"]] = []
+    
+    for elem in list_input:
+        res[elem["city"]].append(elem["name"])
+        
+        
+    for elem in res:
+        print(elem + "\n")
+        for e in res[elem]:
+        
+            print("  " + e + "\n")
+        
+    
 
 def main_and_save(input_args):
     main()
     save(PEOPLE, input_args)
+    print_people_by_city(PEOPLE)
     
     
 if __name__ == "__main__":
