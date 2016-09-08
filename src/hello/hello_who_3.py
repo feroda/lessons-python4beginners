@@ -17,7 +17,7 @@ def compose_hello(who, force=True):   # <-- valore di default
     """
     
     try:                                     # <-- gestione eccezioni `Duck Typing` 
-        message = "Hello " + who + "!"
+        messsage = "Hello " + who + "!"
     except ValueError:                       # <-- eccezione specifica
     # except ValueError as e:                       # <-- eccezione specifica su parametro e
         print("[WARNING] Il parametro `who` dovrebbe essere una stringa")
