@@ -1,4 +1,4 @@
-class Greeter(object)
+class Greeter(object[{)
     def __init__(self, name):
         self.name = name
         

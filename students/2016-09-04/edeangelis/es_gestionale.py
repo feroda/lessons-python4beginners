@@ -9,10 +9,14 @@ def get_json(data):
 def main_amd_save(argv):
     PEOPLE = main()
     #print ("Lista parametri: {}".format(argv))
+    
     if len(argv) > 1:
         save(PEOPLE, argv[1])
     else:
         save(PEOPLE)
+        
+    add_annual(PEOPLE)
+    
     
 def main():
     """
@@ -38,8 +42,10 @@ def main():
                 print get_person_str(p)
     return PEOPLE
 
-def add_annual(diz_pers, stip_ann):
-    diz_pers += {"annual":stip_ann}
+def add_annual(PEOPLE):
+    for diz_pers in PEOPLE:
+        diz_pers["annual"] = diz_pers["salary"]*13
+        print (get_person_str(diz_pers))
 
     
 def save(PEOPLE, fname = "persone.txt"):
