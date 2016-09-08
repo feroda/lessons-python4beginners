@@ -9,7 +9,7 @@ def test_hello():
 
 
 def test_hello_to_not_string():
-    with pytest.raises(TypeError):  #with content manager che serve a wrappare quello che avviene intorno 
+    with pytest.raises(TypeError):
         compose_hello(1)
 
 
