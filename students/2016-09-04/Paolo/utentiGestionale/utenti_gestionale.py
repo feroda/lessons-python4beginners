@@ -4,6 +4,8 @@ import csv
 import json
 import xml.etree.cElementTree as ET
 
+PEOPLE = []
+
 def print_on_screen(list_input):
     for i,p in enumerate(list_input):
         print("Utente {}".format(i))
@@ -15,9 +17,14 @@ def print_on_screen(list_input):
         
 def write_on_csv(list_input):
     with open("people.csv", "wb") as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        spamwriter.writerow(list_input)
         
+        fieldnames = ['name', 'city', 'salary']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter = ";")
+
+        writer.writeheader()
+        
+        for p in list_input:
+            writer.writerow(p)
 
 def write_on_json(list_input):
     with open("people.json", "wb") as jsonfile:
@@ -39,11 +46,10 @@ def write_on_xml(list_input):
 
 def main():
     
-    PEOPLE = []
     number_of_people = int(raw_input("Per quanti utenti vuoi inserire le anagrafiche?"))
     
     for count in range(number_of_people):
-        anagraphic_people_dict = {} 
+        anagraphic_people_dict = {}
         name, city, salary = raw_input("Inserisci name, city, salary:").split()
         
         anagraphic_people_dict["name"] = name
@@ -51,14 +57,27 @@ def main():
         anagraphic_people_dict["salary"] = int(salary)
         PEOPLE.append(anagraphic_people_dict)
         
-    print_on_screen(PEOPLE)      
-    write_on_csv(PEOPLE)
-    write_on_json(PEOPLE)
-    write_on_xml(PEOPLE)
+    print_on_screen(PEOPLE)
+
+def save(list_of_dict):
+    write_on_csv(list_of_dict)
+    write_on_json(list_of_dict)
+    write_on_xml(list_of_dict)
     
 
-
-if __name__ == "__main__":
+def main_and_save():
     main()
+    save(PEOPLE)
+    
+    
+if __name__ == "__main__":
+ 
+    try:
+        main_and_save()
+    except KeyboardInterrupt:
+        print("Non puoi uscire")
+        #response = raw_input("Sei sicuro di voler uscire? (s/n)")
+        #if response == s:
+         #   sys.exit()
     
     
