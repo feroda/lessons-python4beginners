@@ -7,17 +7,16 @@
 * Un solo modo ovvio per fare una cosa
 * Imperativo, ad oggetti e funzionale
 * I miglioramenti vengono inseriti dai PEP
-* [La libreria python sempre sotto il cuscino!](http://docs.python.org/lib/) TODO
+* [La libreria python sempre sotto il cuscino!](https://docs.python.org/2.7/library/)
 
 ## WARNING
 
-* Non c'entra nulla con il serpente
-* Ma deriva dal Monthy Python Flying Circus
-* TODO Ad esempio:
-  - aaaaa
-  - bbbbb
-  - ccccc
+* Python non si riferisce al serpente
+* Ma al Monthy Python Flying Circus
 
+![Locandina](https://upload.wikimedia.org/wikipedia/en/c/cd/Monty_Python's_Flying_Circus_Title_Card.png)
+
+![IMDB](http://ia.media-imdb.com/images/M/MV5BMTIxMDI1MTgzMl5BMl5BanBnXkFtZTcwNzEyMjc2MQ@@._V1_CR0,30,250,141_AL_UX477_CR0,0,477,268_AL_.jpg)
 
 ## E ora... "The hello tour!"
 
@@ -144,6 +143,8 @@ Aggiungiamo encoding del file e documentazione della funzione
 Poi separiamo le funzioni, inseriamo le eccezioni, e un controllo:
 
     `../src/hello/hello_who_3.py`
+
+* [Stack di eccezioni](https://docs.python.org/2.7/library/exceptions.html#exception-hierarchy)
 
 ### E testiamo con il compagno "testardo"
 
