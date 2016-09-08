@@ -19,10 +19,9 @@ def inserimento():
         
         stampa(PEOPLE)
         
-        var_next = raw_input("Continuare l'immisione? y/n ") or "Y"
-        
-        if var_next.upper() in ["N" , "NO"]:
-            var_next = False
+        var_next = raw_input("Interrompere l'immisione? y/n ") or "Y"
+	if var_next.upper() in ["N" , "NO"]
+	   var_next = False
         
 def stampa(l):
 
