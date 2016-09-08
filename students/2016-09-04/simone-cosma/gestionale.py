@@ -62,7 +62,7 @@ def main():
 
 def calculate_annual(people):
     for p in people:
-       add_annual_field(person)
+       add_annual_field(p)
 
 def add_annual_field(person):
     person['annual'] = person['salary'] * 13
