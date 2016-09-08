@@ -61,11 +61,11 @@ def main():
     return PEOPLE
 
 def calculate_annual(people):
-    # anche la tredicesima!!
-    #people = map(lambda p: p['annual'] = p['salary'] * 13, people)
-
     for p in people:
-        p['annual'] = p['salary'] * 13
+       add_annual_field(person)
+
+def add_annual_field(person):
+    person['annual'] = person['salary'] * 13
 
 def group_by_city(people):
     grouped = {}
