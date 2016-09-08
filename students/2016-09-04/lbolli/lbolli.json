@@ -1,0 +1,38 @@
+[
+  {
+    "annual": 14300,
+    "salary": 1100,
+    "city": "Fabriano",
+    "name": "Luca"
+  },
+  {
+    "annual": 15600,
+    "salary": 1200,
+    "city": "Fabriano",
+    "name": "Simone"
+  },
+  {
+    "annual": 14950,
+    "salary": 1150,
+    "city": "Gualdo",
+    "name": "Gabriele"
+  },
+  {
+    "annual": 17420,
+    "salary": 1340,
+    "city": "Senigallia",
+    "name": "Paolo"
+  },
+  {
+    "annual": 23400,
+    "salary": 1800,
+    "city": "Pesaro",
+    "name": "Simone"
+  },
+  {
+    "annual": 35100,
+    "salary": 2700,
+    "city": "Roma",
+    "name": "Patrizia"
+  }
+]
