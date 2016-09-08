@@ -17,10 +17,11 @@ def print_on_screen(list_input):
         print("     Salary: {}".format(p["salary"]))
         
         
-def write_on_csv(list_input):
-    with open("people.csv", "wb") as csvfile:
+def write_on_csv(list_input, filename = "people.csv"):
+    with open(filename, "wb") as csvfile:
         
-        fieldnames = ['name', 'city', 'salary']
+        
+        fieldnames = ['name', 'city', 'salary', 'annual']
         writer = csv.DictWriter(csvfile, fieldnames = fieldnames, delimiter = ";")
 
         writer.writeheader()
@@ -96,10 +97,20 @@ def print_people_by_city(list_input):
         
     
 
+def print_people_with_annual_salary(list_input):
+    for p in list_input:
+        p["annual"] = p["salary"] / 13
+    
+    for elem in list_input:
+        print(elem) 
+
+    write_on_csv(list_input, "peopleWithAnnualSalary.csv")
+    
 def main_and_save(input_args):
     main()
     save(PEOPLE, input_args)
     print_people_by_city(PEOPLE)
+    print_people_with_annual_salary(PEOPLE)
     
     
 if __name__ == "__main__":
