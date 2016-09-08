@@ -1,1 +1,1 @@
-nome = elena, citta' = mondavio, salario = 1234
+nome = elena, citta' = mondavio, salario = 1000
