@@ -1,0 +1,1 @@
+Nome: Pat, city: Bari, stipendio: 10

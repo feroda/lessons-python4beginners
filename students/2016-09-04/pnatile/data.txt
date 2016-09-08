@@ -1,0 +1,2 @@
+Nome: 9, city: 8, stipendio: 8
+Nome: y, city: r, stipendio: 67
