@@ -1,0 +1,17 @@
+[
+  {
+    "salary": 1234, 
+    "city": "mondavio", 
+    "name": "elena"
+  }, 
+  {
+    "salary": 1234, 
+    "city": "senigallia", 
+    "name": "gianluca"
+  }, 
+  {
+    "salary": 1234, 
+    "city": "pesaro", 
+    "name": "simone"
+  }
+]
