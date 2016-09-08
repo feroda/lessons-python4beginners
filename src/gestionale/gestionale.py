@@ -39,17 +39,56 @@ def get_person_str(p):
 
 import json
 def get_json(data):
-    return json.dumps(data)
+    return json.dumps(data, indent=2 )
     
+
+
+# def save(list_of_dicts, fname="data.txt"):
+#     """
+#     Save data in many formats depending on the filename extension.
+#     """
+# 
+#     if fname.endswith(".json"):
+#         export_data = get_json(list_of_dicts)
+#     else:
+#         export_data = ""
+#         for p in list_of_dicts:
+#             export_data += get_person_str(p) + "\n"
+# 
+#     # open: https://docs.python.org/2.7/library/functions.html?highlight=open#open
+#     with open(fname, "w") as f:
+#         f.write(export_data)
+
+
+import csv
+def save_csv(list_of_dicts, f):
+
+    writer = csv.writer(f, delimiter=',')
+    writer.writerow(['NAME', 'CITY', 'SALARY'])
+
+    for p in list_of_dicts:
+        writer.writerow([ p["name"], p["city"], p["salary"] ])
 
 
 def save(list_of_dicts, fname="data.txt"):
-    
-    # open: https://docs.python.org/2.7/library/functions.html?highlight=open#open
-    with open(fname, "w") as f:
-        for p in list_of_dicts:
-            f.write(get_person_str(p) + "\n")
+    """
+    Save data in many formats depending on the filename extension.
+    """
 
+    # open: https://docs.python.org/2.7/library/functions.html?highlight=open#open
+    with open(fname, "wb") as f:
+
+        if fname.endswith(".json"):
+            json.dump(list_of_dicts, f)
+
+        elif fname.endswith(".csv"):
+            save_csv(list_of_dicts, f)
+        else:
+            export_data = ""
+            for p in list_of_dicts:
+                export_data += get_person_str(p) + "\n"
+
+            f.write(export_data)
 
 def main_and_save(argv):
 
