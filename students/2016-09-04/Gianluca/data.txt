@@ -1,0 +1,1 @@
+Nome: a, Citta': a, Stipendio: 1
