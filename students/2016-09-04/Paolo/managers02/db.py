@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
+
 import sqlite3
 import os
 
-from .base import BaseManager
+from base import BaseManager
 
 class BaseDBManager(BaseManager):
 
@@ -68,7 +70,7 @@ class SqliteDBManager(BaseDBManager):
 
         # Do this instead
         for row in rows:
-            t = (row["name"], row["city"], row["salary"])
+            t = list((row[k] for k in (row["name"], row["city"], row["salary"])))
             cu.execute('INSERT INTO people VALUES (?,?,?)', t) #Il QUOTING deve farlo la libreria e non noi se no è un macello!!
         self.conn.commit()
 

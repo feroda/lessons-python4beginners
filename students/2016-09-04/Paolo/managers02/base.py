@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
+
 class BaseManager(object):
 
     def __init__(self, debug=False):
         """Init with debug mode on/off."""
 
-        self.fname = fname
         self.debug = debug
 
     def _do_export(self, rows):
@@ -31,7 +32,7 @@ class BaseManager(object):
     def debug_export(self, rows):
         
         if self.debug:
-            print(self.get_output(rows)
+            print(self.get_output(rows))
 
     def debug_import(self, rows):
 
@@ -40,9 +41,6 @@ class BaseManager(object):
 
 
 class BaseFileManager(BaseManager):
-
-    #Questo serve perché ora BaseManager deve accogliere anche le implementazioni per i database.
-    #Quindi BaseManager non prende più il fileName, mentre BaseFileManager sì.
 
     
     def __init__(self, fname, debug=False):
