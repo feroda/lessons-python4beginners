@@ -7,26 +7,8 @@
     }, 
     {
         "salary": 2, 
-        "city": "Fabriano", 
+        "city": "Gualdo", 
         "annual": 26, 
-        "name": "Luca"
-    }, 
-    {
-        "salary": 3, 
-        "city": "Gualdo Tadino", 
-        "annual": 39, 
         "name": "Federico"
-    }, 
-    {
-        "salary": 4, 
-        "city": "Falconara Marittima", 
-        "annual": 52, 
-        "name": "Luca"
-    }, 
-    {
-        "salary": 5, 
-        "city": "Montecchio", 
-        "annual": 65, 
-        "name": "Simone"
     }
 ]

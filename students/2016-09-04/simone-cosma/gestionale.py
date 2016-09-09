@@ -3,6 +3,10 @@ import json
 import xml
 import csv
 import io
+import database
+import os
+
+DB_NAME = u'people.sqlite'
 
 def to_csv_string(dictionary):
     '''
@@ -14,6 +18,29 @@ def to_csv_string(dictionary):
         dict_writer.writeheader()
         dict_writer.writerows(dictionary)
         return f.getvalue()
+
+def load_people():
+    # check if db exist || load json || do nothing
+    if(file_exists(DB_NAME)):
+        result = load_from_DB()
+        return [{'name':x, 'city': y, 'salary': z} for x,y,z in result]
+
+def file_exists(filename):
+    return os.path.exists(filename)
+
+def save_to_DB(people):
+    dbManager = database.DBManager(DB_NAME)
+    dbManager.connect()
+    dbManager.save(people)
+    dbManager.close()
+
+def load_from_DB():
+    dbManager = database.DBManager(DB_NAME)
+    dbManager.connect()
+    people = dbManager.load()
+    dbManager.close()
+
+    return people
 
 FILE_HANDLER_GENERATOR = {
     'f' : {'ext': 'txt',    'func': str, 'parameters': {}},
@@ -77,6 +104,12 @@ def group_by_city(people):
     return grouped
 
 if __name__ == "__main__":
-    people = main() 
+    people = load_people() or []
+    print('############## - PEOPLE - ##############')
+    print(people)
+    print('########################################')
+    new_people = main()
+    people += new_people # ask new insertion
     calculate_annual(people)
     should_save(people)
+    save_to_DB(new_people)
