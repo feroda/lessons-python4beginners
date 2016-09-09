@@ -5,10 +5,46 @@
 
 
 ```python
+l = [1,2,3,4, 800, 40, 73, 8]
+ll = [x*2 for x in l]
+# ll = [2, 4, 6, 8, 1600, 80, 146, 16]
 
+# list(enumerate(l))
+{ k: k*2 for k in l }
+ll.append("pippo")
+zip(l, ll, ll, ll)
+
+{ pippo: v for k,v,pippo in zip(l, ll, ll) }
+
+x,y,z = 1,5,10
 ```
 
+
+
+
+    {2: 2, 4: 4, 6: 6, 8: 8, 16: 16, 80: 80, 146: 146, 1600: 1600}
+
+
+
 ### Operatore "is"
+
+
+```python
+import copy
+x = [10, 3, 9]
+y = copy.copy(x)
+print("\n# y = copy.copy(x)")
+print("x is y? {}".format(x is y))
+print("x == y? {}".format(x == y))
+print(id(x), id(y))
+```
+
+    
+    # y = copy.copy(x)
+    x is y? False
+    x == y? True
+    (57176712L, 61642760L)
+    
 
 
 ```python
@@ -79,13 +115,13 @@ PEOPLE
 
 
 
-    [{'city': 'Fabriano', 'name': 'Luca', 'salary': 2112},
-     {'city': 'Fabriano', 'name': 'Simone', 'salary': 2081},
-     {'city': 'Mondavio', 'name': 'Elena', 'salary': 1794},
-     {'city': 'Senigallia', 'name': 'Gianluca', 'salary': 24},
-     {'city': 'Roma', 'name': 'Monica', 'salary': 1221},
-     {'city': 'Bari', 'name': 'Sonia', 'salary': 1493},
-     {'city': 'Bari', 'name': 'Patrizia', 'salary': 1720}]
+    [{'city': 'Fabriano', 'name': 'Luca', 'salary': 587},
+     {'city': 'Fabriano', 'name': 'Simone', 'salary': 59},
+     {'city': 'Mondavio', 'name': 'Elena', 'salary': 1478},
+     {'city': 'Senigallia', 'name': 'Gianluca', 'salary': 851},
+     {'city': 'Roma', 'name': 'Monica', 'salary': 531},
+     {'city': 'Bari', 'name': 'Sonia', 'salary': 479},
+     {'city': 'Bari', 'name': 'Patrizia', 'salary': 2157}]
 
 
 
@@ -103,33 +139,83 @@ import pprint
 pprint.pprint(city_map)
 ```
 
-    {'Bari': [{'city': 'Bari', 'name': 'Sonia', 'salary': 2106},
-              {'city': 'Bari', 'name': 'Patrizia', 'salary': 1252}],
-     'Fabriano': [{'city': 'Fabriano', 'name': 'Luca', 'salary': 1622},
-                  {'city': 'Fabriano', 'name': 'Simone', 'salary': 2664}],
-     'Mondavio': [{'city': 'Mondavio', 'name': 'Elena', 'salary': 1502}],
-     'Roma': [{'city': 'Roma', 'name': 'Monica', 'salary': 52}],
-     'Senigallia': [{'city': 'Senigallia', 'name': 'Gianluca', 'salary': 2944}]}
+    {'Bari': [{'city': 'Bari', 'name': 'Sonia', 'salary': 479},
+              {'city': 'Bari', 'name': 'Patrizia', 'salary': 2157}],
+     'Fabriano': [{'city': 'Fabriano', 'name': 'Luca', 'salary': 587},
+                  {'city': 'Fabriano', 'name': 'Simone', 'salary': 59}],
+     'Mondavio': [{'city': 'Mondavio', 'name': 'Elena', 'salary': 1478}],
+     'Roma': [{'city': 'Roma', 'name': 'Monica', 'salary': 531}],
+     'Senigallia': [{'city': 'Senigallia', 'name': 'Gianluca', 'salary': 851}]}
+    
+
+
+```python
+class DictList(dict):
+
+     def get(self, k, default=None):
+         if k not in self:
+            self[k] = []
+         return super(DictList, self).get(k, default)
+
+     def __getitem__(self, k):
+         if k not in self:
+            # self[k] = []
+            super(DictList, self).__setitem__(k, [])
+            
+         return super(DictList, self).__getitem__(k)
+        
+city_map = DictList()
+l = city_map.get("pippo")
+print(city_map)
+```
+
+    {'pippo': []}
+    
+
+
+```python
+city_map = DictList()
+for p in PEOPLE:
+    city = p["city"]
+    # city_map[city] = city_map.get(city, [])
+    city_map.get(city).append(p)
+    
+import pprint
+pprint.pprint(city_map)
+```
+
+    {'Bari': [{'city': 'Bari', 'name': 'Sonia', 'salary': 479},
+              {'city': 'Bari', 'name': 'Patrizia', 'salary': 2157}],
+     'Fabriano': [{'city': 'Fabriano', 'name': 'Luca', 'salary': 587},
+                  {'city': 'Fabriano', 'name': 'Simone', 'salary': 59}],
+     'Mondavio': [{'city': 'Mondavio', 'name': 'Elena', 'salary': 1478}],
+     'Roma': [{'city': 'Roma', 'name': 'Monica', 'salary': 531}],
+     'Senigallia': [{'city': 'Senigallia', 'name': 'Gianluca', 'salary': 851}]}
     
 
 ### BONUS: Ordinamento per chiave del dizionario
 
 
 ```python
-PEOPLE.sort(key=lambda x: x["name"])
+# def get_name(x):
+#    return (x["city"], x["name"]) 
+# PEOPLE.sort(key=get_name)
+
+PEOPLE.sort(key=lambda x: (x["city"], x["name"]))
+
 PEOPLE
 ```
 
 
 
 
-    [{'city': 'Mondavio', 'name': 'Elena', 'salary': 15},
-     {'city': 'Senigallia', 'name': 'Gianluca', 'salary': 15},
-     {'city': 'Fabriano', 'name': 'Luca', 'salary': 3},
-     {'city': 'Roma', 'name': 'Monica', 'salary': 20},
-     {'city': 'Bari', 'name': 'Patrizia', 'salary': 20},
-     {'city': 'Fabriano', 'name': 'Simone', 'salary': 10},
-     {'city': 'Bari', 'name': 'Sonia', 'salary': 20}]
+    [{'city': 'Bari', 'name': 'Patrizia', 'salary': 2157},
+     {'city': 'Bari', 'name': 'Sonia', 'salary': 479},
+     {'city': 'Fabriano', 'name': 'Luca', 'salary': 587},
+     {'city': 'Fabriano', 'name': 'Simone', 'salary': 59},
+     {'city': 'Mondavio', 'name': 'Elena', 'salary': 1478},
+     {'city': 'Roma', 'name': 'Monica', 'salary': 531},
+     {'city': 'Senigallia', 'name': 'Gianluca', 'salary': 851}]
 
 
 

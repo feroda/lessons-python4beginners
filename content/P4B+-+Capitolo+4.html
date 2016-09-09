@@ -11764,6 +11764,46 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">ll</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
+<span class="c1"># ll = [2, 4, 6, 8, 1600, 80, 146, 16]</span>
+
+<span class="c1"># list(enumerate(l))</span>
+<span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">l</span> <span class="p">}</span>
+<span class="n">ll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;pippo&quot;</span><span class="p">)</span>
+<span class="nb">zip</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="p">)</span>
+
+<span class="p">{</span> <span class="n">pippo</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">pippo</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[76]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{2: 2, 4: 4, 6: 6, 8: 8, 16: 16, 80: 80, 146: 146, 1600: 1600}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11772,6 +11812,43 @@ div#notebook {
 <h3 id="Operatore-&quot;is&quot;">Operatore "is"<a class="anchor-link" href="#Operatore-&quot;is&quot;">&#182;</a></h3>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"># y = copy.copy(x)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x is y? {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x == y? {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+# y = copy.copy(x)
+x is y? False
+x == y? True
+(57176712L, 61642760L)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -11845,7 +11922,7 @@ x == y? True
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -11876,17 +11953,17 @@ x == y? True
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[84]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[{&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Luca&#39;, &#39;salary&#39;: 2112},
- {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Simone&#39;, &#39;salary&#39;: 2081},
- {&#39;city&#39;: &#39;Mondavio&#39;, &#39;name&#39;: &#39;Elena&#39;, &#39;salary&#39;: 1794},
- {&#39;city&#39;: &#39;Senigallia&#39;, &#39;name&#39;: &#39;Gianluca&#39;, &#39;salary&#39;: 24},
- {&#39;city&#39;: &#39;Roma&#39;, &#39;name&#39;: &#39;Monica&#39;, &#39;salary&#39;: 1221},
- {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Sonia&#39;, &#39;salary&#39;: 1493},
- {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Patrizia&#39;, &#39;salary&#39;: 1720}]</pre>
+<pre>[{&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Luca&#39;, &#39;salary&#39;: 587},
+ {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Simone&#39;, &#39;salary&#39;: 59},
+ {&#39;city&#39;: &#39;Mondavio&#39;, &#39;name&#39;: &#39;Elena&#39;, &#39;salary&#39;: 1478},
+ {&#39;city&#39;: &#39;Senigallia&#39;, &#39;name&#39;: &#39;Gianluca&#39;, &#39;salary&#39;: 851},
+ {&#39;city&#39;: &#39;Roma&#39;, &#39;name&#39;: &#39;Monica&#39;, &#39;salary&#39;: 531},
+ {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Sonia&#39;, &#39;salary&#39;: 479},
+ {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Patrizia&#39;, &#39;salary&#39;: 2157}]</pre>
 </div>
 
 </div>
@@ -11906,7 +11983,7 @@ x == y? True
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[102]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">city_map</span> <span class="o">=</span> <span class="p">{}</span>
@@ -11929,13 +12006,96 @@ x == y? True
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;Bari&#39;: [{&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Sonia&#39;, &#39;salary&#39;: 2106},
-          {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Patrizia&#39;, &#39;salary&#39;: 1252}],
- &#39;Fabriano&#39;: [{&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Luca&#39;, &#39;salary&#39;: 1622},
-              {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Simone&#39;, &#39;salary&#39;: 2664}],
- &#39;Mondavio&#39;: [{&#39;city&#39;: &#39;Mondavio&#39;, &#39;name&#39;: &#39;Elena&#39;, &#39;salary&#39;: 1502}],
- &#39;Roma&#39;: [{&#39;city&#39;: &#39;Roma&#39;, &#39;name&#39;: &#39;Monica&#39;, &#39;salary&#39;: 52}],
- &#39;Senigallia&#39;: [{&#39;city&#39;: &#39;Senigallia&#39;, &#39;name&#39;: &#39;Gianluca&#39;, &#39;salary&#39;: 2944}]}
+<pre>{&#39;Bari&#39;: [{&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Sonia&#39;, &#39;salary&#39;: 479},
+          {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Patrizia&#39;, &#39;salary&#39;: 2157}],
+ &#39;Fabriano&#39;: [{&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Luca&#39;, &#39;salary&#39;: 587},
+              {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Simone&#39;, &#39;salary&#39;: 59}],
+ &#39;Mondavio&#39;: [{&#39;city&#39;: &#39;Mondavio&#39;, &#39;name&#39;: &#39;Elena&#39;, &#39;salary&#39;: 1478}],
+ &#39;Roma&#39;: [{&#39;city&#39;: &#39;Roma&#39;, &#39;name&#39;: &#39;Monica&#39;, &#39;salary&#39;: 531}],
+ &#39;Senigallia&#39;: [{&#39;city&#39;: &#39;Senigallia&#39;, &#39;name&#39;: &#39;Gianluca&#39;, &#39;salary&#39;: 851}]}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">DictList</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+
+     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+         <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DictList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+         <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="c1"># self[k] = []</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">DictList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__setitem__</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="p">[])</span>
+            
+         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DictList</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        
+<span class="n">city_map</span> <span class="o">=</span> <span class="n">DictList</span><span class="p">()</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">city_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pippo&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">city_map</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;pippo&#39;: []}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[101]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">city_map</span> <span class="o">=</span> <span class="n">DictList</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">PEOPLE</span><span class="p">:</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">]</span>
+    <span class="c1"># city_map[city] = city_map.get(city, [])</span>
+    <span class="n">city_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">city</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">city_map</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;Bari&#39;: [{&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Sonia&#39;, &#39;salary&#39;: 479},
+          {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Patrizia&#39;, &#39;salary&#39;: 2157}],
+ &#39;Fabriano&#39;: [{&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Luca&#39;, &#39;salary&#39;: 587},
+              {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Simone&#39;, &#39;salary&#39;: 59}],
+ &#39;Mondavio&#39;: [{&#39;city&#39;: &#39;Mondavio&#39;, &#39;name&#39;: &#39;Elena&#39;, &#39;salary&#39;: 1478}],
+ &#39;Roma&#39;: [{&#39;city&#39;: &#39;Roma&#39;, &#39;name&#39;: &#39;Monica&#39;, &#39;salary&#39;: 531}],
+ &#39;Senigallia&#39;: [{&#39;city&#39;: &#39;Senigallia&#39;, &#39;name&#39;: &#39;Gianluca&#39;, &#39;salary&#39;: 851}]}
 </pre>
 </div>
 </div>
@@ -11955,10 +12115,15 @@ x == y? True
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[109]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">PEOPLE</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># def get_name(x):</span>
+<span class="c1">#    return (x[&quot;city&quot;], x[&quot;name&quot;]) </span>
+<span class="c1"># PEOPLE.sort(key=get_name)</span>
+
+<span class="n">PEOPLE</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span>
+
 <span class="n">PEOPLE</span>
 </pre></div>
 
@@ -11970,17 +12135,17 @@ x == y? True
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[109]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[{&#39;city&#39;: &#39;Mondavio&#39;, &#39;name&#39;: &#39;Elena&#39;, &#39;salary&#39;: 15},
- {&#39;city&#39;: &#39;Senigallia&#39;, &#39;name&#39;: &#39;Gianluca&#39;, &#39;salary&#39;: 15},
- {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Luca&#39;, &#39;salary&#39;: 3},
- {&#39;city&#39;: &#39;Roma&#39;, &#39;name&#39;: &#39;Monica&#39;, &#39;salary&#39;: 20},
- {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Patrizia&#39;, &#39;salary&#39;: 20},
- {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Simone&#39;, &#39;salary&#39;: 10},
- {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Sonia&#39;, &#39;salary&#39;: 20}]</pre>
+<pre>[{&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Patrizia&#39;, &#39;salary&#39;: 2157},
+ {&#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Sonia&#39;, &#39;salary&#39;: 479},
+ {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Luca&#39;, &#39;salary&#39;: 587},
+ {&#39;city&#39;: &#39;Fabriano&#39;, &#39;name&#39;: &#39;Simone&#39;, &#39;salary&#39;: 59},
+ {&#39;city&#39;: &#39;Mondavio&#39;, &#39;name&#39;: &#39;Elena&#39;, &#39;salary&#39;: 1478},
+ {&#39;city&#39;: &#39;Roma&#39;, &#39;name&#39;: &#39;Monica&#39;, &#39;salary&#39;: 531},
+ {&#39;city&#39;: &#39;Senigallia&#39;, &#39;name&#39;: &#39;Gianluca&#39;, &#39;salary&#39;: 851}]</pre>
 </div>
 
 </div>
