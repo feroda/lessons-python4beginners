@@ -12212,6 +12212,81 @@ x == y? True
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[119]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">BaseManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">do_export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__privateattr</span> <span class="o">=</span> <span class="s2">&quot;PRIVATO&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">u&quot;Esporto qualcosa per te&quot;</span><span class="p">)</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_internal_do_export</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rv</span>
+    
+<span class="k">class</span> <span class="nc">FileManager</span><span class="p">(</span><span class="n">BaseManager</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_internal_do_export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__privateattr</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">u&quot;ti esporto&quot;</span><span class="p">)</span>
+        
+<span class="k">class</span> <span class="nc">ExtraFileManager</span><span class="p">(</span><span class="n">FileManager</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_internal_do_export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">u&quot;ti esporto extra&quot;</span><span class="p">)</span>
+
+        
+<span class="n">mymanager</span> <span class="o">=</span> <span class="n">FileManager</span><span class="p">()</span>
+<span class="n">mymanager</span><span class="o">.</span><span class="n">do_export</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">mymanger</span><span class="o">.</span><span class="n">__privateattr</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Esporto qualcosa per te
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-119-a9a4533ad29d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">     17</span> 
+<span class="ansi-green-fg">     18</span> mymanager <span class="ansi-yellow-intense-fg ansi-bold">=</span> FileManager<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 19</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>mymanager<span class="ansi-yellow-intense-fg ansi-bold">.</span>do_export<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">2</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     20</span> mymanger<span class="ansi-yellow-intense-fg ansi-bold">.</span>__privateattr
+
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-119-a9a4533ad29d&gt;</span> in <span class="ansi-cyan-fg">do_export</span><span class="ansi-blue-intense-fg ansi-bold">(self, rows)</span>
+<span class="ansi-green-fg">      3</span>         self<span class="ansi-yellow-intense-fg ansi-bold">.</span>__privateattr <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;PRIVATO&#34;</span>
+<span class="ansi-green-fg">      4</span>         <span class="ansi-green-intense-fg ansi-bold">print</span><span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">u&#34;Esporto qualcosa per te&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 5</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>rv <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_internal_do_export<span class="ansi-yellow-intense-fg ansi-bold">(</span>rows<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      6</span>         <span class="ansi-green-intense-fg ansi-bold">return</span> rv
+<span class="ansi-green-fg">      7</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-119-a9a4533ad29d&gt;</span> in <span class="ansi-cyan-fg">_internal_do_export</span><span class="ansi-blue-intense-fg ansi-bold">(self, rows)</span>
+<span class="ansi-green-fg">      8</span> <span class="ansi-green-intense-fg ansi-bold">class</span> FileManager<span class="ansi-yellow-intense-fg ansi-bold">(</span>BaseManager<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">      9</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> _internal_do_export<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> rows<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 10</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">print</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>__privateattr<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     11</span>         <span class="ansi-green-intense-fg ansi-bold">print</span><span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">u&#34;ti esporto&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     12</span> 
+
+<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>: &#39;FileManager&#39; object has no attribute &#39;_FileManager__privateattr&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12234,6 +12309,104 @@ x == y? True
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">SqliteDBManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">_do_export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
+
+        <span class="n">cu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+        <span class="c1"># KO: Never do this -- insecure!</span>
+        <span class="c1"># KO: for row in rows:</span>
+        <span class="c1"># KO:     c.execute(&quot;INSERT INTO people VALUES (&#39;{name}&#39;,&#39;{city}&#39;,&#39;{salary}&#39;)&quot;.format(**row))</span>
+
+        <span class="c1"># Do this instead</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">])</span>
+            <span class="n">cu</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;INSERT INTO people VALUES (?,?,?)&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[124]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">PEOPLE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ciao (&#39;{name}&#39;,&#39;{city}&#39;,&#39;{salary}&#39;)&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">row</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">format</span><span class="p">({</span><span class="s1">&#39;salary&#39;</span><span class="p">:</span> <span class="mi">2157</span><span class="p">,</span> 
+          <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Bari&#39;</span><span class="p">,</span> 
+          <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Patrizia&#39;</span><span class="p">})</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> 
+         <span class="n">city</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">],</span> 
+         <span class="n">salary</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;salary&#39;: 2157, &#39;city&#39;: &#39;Bari&#39;, &#39;name&#39;: &#39;Patrizia&#39;}
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-124-654a68f527f7&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      6</span> s.format({&#39;salary&#39;: 2157, 
+<span class="ansi-green-fg">      7</span>           <span class="ansi-blue-intense-fg ansi-bold">&#39;city&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;Bari&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 8</span><span class="ansi-yellow-intense-fg ansi-bold">           &#39;name&#39;: &#39;Patrizia&#39;})
+</span><span class="ansi-green-fg">      9</span> 
+<span class="ansi-green-fg">     10</span> s.format(name=row[&#34;name&#34;], 
+
+<span class="ansi-red-intense-fg ansi-bold">KeyError</span>: &#39;name&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Esercizio-DB-API">Esercizio DB-API<a class="anchor-link" href="#Esercizio-DB-API">&#182;</a></h2><ol>
+<li>Fai in modo che il tuo gestionale:<ul>
+<li>inizializzi un tabella PEOPLE su un database sqlite3</li>
+<li>vi esporti i dati di PEOPLE</li>
+</ul>
+</li>
+<li>BONUS: Importa un file json (o altro) all'avvio del tuo programma in modo da precaricare un set di dati in PEOPLE</li>
+</ol>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">

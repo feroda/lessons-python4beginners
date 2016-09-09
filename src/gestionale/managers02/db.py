@@ -36,20 +36,22 @@ class SqliteDBManager(BaseDBManager):
 
     def _init_db(self):
 
-        self.conn = sqlite3.connect(self.settings["name"])
+        self._connect()
         cu = self.conn.cursor()
         cu.execute("CREATE TABLE people (name VARCHAR(64), city VARCHAR(32), salary INTEGER);")
         self.conn.commit()
+
+    def _connect(self):
+        self.conn = sqlite3.connect(self.settings["name"])
 
     def connect(self):
         """Create a connection to DB."""
 
         # Initialize the db if does not exists
-        # wARNING: lo fa sempre, meglio rendere pubblico il metodo init_db()
         if not os.path.exists(self.settings["name"]):
             self._init_db()
         else:
-            self.conn = sqlite3.connect(self.settings["name"])
+            self._connect()
 
         self.conn.row_factory = sqlite3.Row
 
@@ -67,7 +69,7 @@ class SqliteDBManager(BaseDBManager):
         # Do this instead
         for row in rows:
             t = (row["name"], row["city"], row["salary"])
-            c.execute('INSERT INTO people VALUES (?,?,?)', t)
+            cu.execute('INSERT INTO people VALUES (?,?,?)', t)
         self.conn.commit()
 
     def _do_import(self):

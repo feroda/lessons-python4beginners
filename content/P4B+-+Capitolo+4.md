@@ -245,6 +245,65 @@ PEOPLE
 # v. gestionale/managers01/
 ```
 
+
+```python
+class BaseManager(object):
+    def do_export(self, rows):
+        self.__privateattr = "PRIVATO"
+        print(u"Esporto qualcosa per te")
+        rv = self._internal_do_export(rows)
+        return rv
+    
+class FileManager(BaseManager):
+    def _internal_do_export(self, rows):
+        print(self.__privateattr)
+        print(u"ti esporto")
+        
+class ExtraFileManager(FileManager):
+    def _internal_do_export(self, rows):
+        print(u"ti esporto extra")
+
+        
+mymanager = FileManager()
+mymanager.do_export([1,2])
+mymanger.__privateattr
+
+```
+
+    Esporto qualcosa per te
+    
+
+
+    ---------------------------------------------------------------------------
+
+    AttributeError                            Traceback (most recent call last)
+
+    <ipython-input-119-a9a4533ad29d> in <module>()
+         17 
+         18 mymanager = FileManager()
+    ---> 19 mymanager.do_export([1,2])
+         20 mymanger.__privateattr
+    
+
+    <ipython-input-119-a9a4533ad29d> in do_export(self, rows)
+          3         self.__privateattr = "PRIVATO"
+          4         print(u"Esporto qualcosa per te")
+    ----> 5         rv = self._internal_do_export(rows)
+          6         return rv
+          7 
+    
+
+    <ipython-input-119-a9a4533ad29d> in _internal_do_export(self, rows)
+          8 class FileManager(BaseManager):
+          9     def _internal_do_export(self, rows):
+    ---> 10         print(self.__privateattr)
+         11         print(u"ti esporto")
+         12 
+    
+
+    AttributeError: 'FileManager' object has no attribute '_FileManager__privateattr'
+
+
 ## DB-API
 
 
@@ -252,6 +311,69 @@ PEOPLE
 # [PEP 249](https://www.python.org/dev/peps/pep-0249/)
 # v. gestionale/managers02/db.py
 ```
+
+
+```python
+class SqliteDBManager(object):
+    
+    def _do_export(self, rows):
+
+        cu = self.conn.cursor()
+
+        # KO: Never do this -- insecure!
+        # KO: for row in rows:
+        # KO:     c.execute("INSERT INTO people VALUES ('{name}','{city}','{salary}')".format(**row))
+
+        # Do this instead
+        for row in rows:
+            t = (row["name"], row["city"], row["salary"])
+            cu.execute('INSERT INTO people VALUES (?,?,?)', t)
+        self.conn.commit()
+
+```
+
+
+```python
+row = PEOPLE[0]
+print(row)
+s = "ciao ('{name}','{city}','{salary}')"
+s.format(**row)
+
+s.format({'salary': 2157, 
+          'city': 'Bari', 
+          'name': 'Patrizia'})
+
+s.format(name=row["name"], 
+         city=row["city"], 
+         salary=row["salary"])
+
+```
+
+    {'salary': 2157, 'city': 'Bari', 'name': 'Patrizia'}
+    
+
+
+    ---------------------------------------------------------------------------
+
+    KeyError                                  Traceback (most recent call last)
+
+    <ipython-input-124-654a68f527f7> in <module>()
+          6 s.format({'salary': 2157, 
+          7           'city': 'Bari',
+    ----> 8           'name': 'Patrizia'})
+          9 
+         10 s.format(name=row["name"], 
+    
+
+    KeyError: 'name'
+
+
+## Esercizio DB-API
+
+1. Fai in modo che il tuo gestionale:
+    * inizializzi un tabella PEOPLE su un database sqlite3
+    * vi esporti i dati di PEOPLE
+2. BONUS: Importa un file json (o altro) all'avvio del tuo programma in modo da precaricare un set di dati in PEOPLE
 
 ## Decoratori
 
