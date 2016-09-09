@@ -35,11 +35,13 @@ class BaseDBManager(BaseManager):
 class SqliteDBManager(BaseDBManager):
 
     def _init_db(self):
-
-        self.conn = sqlite3.connect(self.settings["name"])
+        self._connect()
         cu = self.conn.cursor()
         cu.execute("CREATE TABLE people (name VARCHAR(64), city VARCHAR(32), salary INTEGER);")
         self.conn.commit()
+        
+    def _connect(self): #Mettiamo la connessione quì così che non devo ripeterla nella classe, però sconsigliamo a chi mi usa da fuori di usare questo metodo
+        self.conn = sqlite3.connect(self.settings["name"])
 
     def connect(self):
         """Create a connection to DB."""
@@ -49,7 +51,7 @@ class SqliteDBManager(BaseDBManager):
         if not os.path.exists(self.settings["name"]):
             self._init_db()
         else:
-            self.conn = sqlite3.connect(self.settings["name"])
+            self._connect()
 
         self.conn.row_factory = sqlite3.Row #Questo serve per fare in modo che i record restituiti dalla fetchAll siano sottoforma di dizionario con chiave.
 
@@ -67,7 +69,7 @@ class SqliteDBManager(BaseDBManager):
         # Do this instead
         for row in rows:
             t = (row["name"], row["city"], row["salary"])
-            c.execute('INSERT INTO people VALUES (?,?,?)', t)
+            cu.execute('INSERT INTO people VALUES (?,?,?)', t) #Il QUOTING deve farlo la libreria e non noi se no è un macello!!
         self.conn.commit()
 
     def _do_import(self):
