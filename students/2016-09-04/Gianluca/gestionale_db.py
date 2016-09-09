@@ -75,7 +75,6 @@ def save_db(data, fname):
 	for row in data:
 		#t = list(row(k) for k in ("name","city","salary")) # => list compression
 		t = (row["name"], row["city"], row["salary"])
-		print (t)
 		c.execute('INSERT INTO people VALUES (?,?,?)', t)
 		conn.commit()
 	conn.close()
@@ -84,8 +83,29 @@ def read_db(fname,PEOPLE):
 	conn = get_conn(fname)
 	c = conn.cursor()
 	c.execute("SELECT name, city, salary FROM people")
-	for row in c.fetchone():
-		PEOPLE += row
+	"""
+	for row in c.fetchall():
+		person_d = {
+			'name': row['name'],
+			'city': row["city"],
+			'salary': row["salary"]
+			}
+		PEOPLE.append(person_d)
+	"""
+	while True:
+		row = c.fetchone()
+		if row == None:
+			break
+		person_d = {
+			'name': row['name'],
+			'city': row["city"],
+			'salary': row["salary"]
+			}
+		PEOPLE.append(person_d)
+	print("Sono presenti:\n")
+	for p in PEOPLE:
+		print(get_pers_strin(p))
+	print("\n")
 
 def save_json(data, fname):
 	with open(fname, 'w') as f:
@@ -102,7 +122,7 @@ def main_save(argv):
 		fname = "people.db"
 	PEOPLE = main(fname)
 	save(PEOPLE,fname)
-	
+
 if __name__ == "__main__":
 	main_save(sys.argv)
   
