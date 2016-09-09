@@ -76,8 +76,29 @@ def save(list_of_dict, input_args):
         
     write_on_xml(list_of_dict)
     
+
+class DictList(dict):
+    def get(self, k, default = None):
+        if k not in self:
+            self[k] = []
+        return super(DictList, self).get(k, default)
+        
+def print_people_by_city_feroda(list_input): #Questa opzione per le persone suddivise in città è più comoda di quella sotto ed utilizza una classe fatta da noi
     
-def print_people_by_city(list_input):
+    res = DictList()
+    
+    for elem in list_input:
+        res.get(elem["city"]).append(elem["name"])
+    
+    print("People by City By Feroda:")
+    for elem in res:
+        print("City: " + elem)
+        for e in res[elem]:
+            print("  " + e)
+    
+def print_people_by_city(list_input):   #Invece di fare il doppio ciclo per assegnare la lista vuota ecc, mi basterebbe farne uno dove per primo 
+                                        #faccio res[elem["city"]] = res.get(elem["city"], []) 
+                                        #Che auto inizializza il dizionario per una chiave con una lista vuota se quella chiave non è già presente.
     print("People by City..")
     
     res = {}
@@ -90,10 +111,10 @@ def print_people_by_city(list_input):
         
         
     for elem in res:
-        print(elem + "\n")
+        print("City: " + elem)
         for e in res[elem]:
         
-            print("  " + e + "\n")
+            print("  " + e)
         
     
 def compute_annual_salary(person):
@@ -112,6 +133,7 @@ def main_and_save(input_args):
     main()
     save(PEOPLE, input_args)
     print_people_by_city(PEOPLE)
+    print_people_by_city_feroda(PEOPLE)
     print_people_with_annual_salary(PEOPLE)
     
     
