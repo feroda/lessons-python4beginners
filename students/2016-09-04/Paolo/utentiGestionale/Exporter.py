@@ -10,7 +10,9 @@ class BaseExporter(object):
         
     def do_export(self, rows):
         raise NotImplementedError("To be implemented in subclasses!")
-    
+        
+        
+        
 
 class FileExporter(BaseExporter):
 
