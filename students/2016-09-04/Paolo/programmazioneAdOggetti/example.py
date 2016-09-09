@@ -5,5 +5,5 @@ class Exporter(object):
     def __init__(self, name):
         self.name = name
 
-    def hello(self):
-        print("Hello {}".format(self.name))
+    def do_export(self, f, data):
+        
