@@ -1,0 +1,32 @@
+[
+  {
+    "salary": 100, 
+    "city": "Senigallia", 
+    "name": "Paolo"
+  }, 
+  {
+    "salary": 200, 
+    "city": "Senigallia", 
+    "name": "Marco"
+  }, 
+  {
+    "salary": 400, 
+    "city": "Fabriano", 
+    "name": "Luca"
+  }, 
+  {
+    "salary": 250, 
+    "city": "Lucca", 
+    "name": "Mauro"
+  }, 
+  {
+    "salary": 1000, 
+    "city": "Gerusalemme", 
+    "name": "Gesu"
+  }, 
+  {
+    "salary": 900, 
+    "city": "Nazareth", 
+    "name": "Maria"
+  }
+]
