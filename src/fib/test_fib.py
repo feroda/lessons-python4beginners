@@ -10,7 +10,6 @@ def test_fib_ok_small():
 def test_fib_raise_if_string():
     with pytest.raises(TypeError):
         fib("a")
-    with pytest.raises(TypeError):
         fib("1")
 
 def test_fib_raises_lt_zero():
