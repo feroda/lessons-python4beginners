@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+"""
+Questo e' gestionale delle persone che hanno conigli.
+"""
+import fibo
+
+
+def ask_for_person():
+    p = {}
+    for attr in [u"Città", 'name', 'city', 'salary', 'genfibo']:
+        ain = u"Inserisci {}: ".format(attr)
+        value = raw_input(ain.encode("utf-8"))
+        if value == "STOP":
+            return
+        else:
+            p[attr] = value
+    return p
+
+
+def main():
+    """
+    # Step 1. Finché l'utente non scrive STOP
+    # Step 2. L'utente inserisce il nome
+    #         Usa raw_input("Inserisci ...") per chiedere le info all'utente
+    # Step 3. L'utente inserisce la città
+    # Step 4. L'utente inserisce lo stipendio
+    # Step 5. Inserisci il dizionario con chiavi 
+    #   'name', 'city', 'salary', 'genfibo'
+    #   nella lista PEOPLE = []
+    # Step 6. Stampa a video PEOPLE nel modo che ti piace
+    # Step 7. Riinizia da Step 1
+    # FINE
+    """
+    PEOPLE = []
+    while True:
+        person = ask_for_person()
+        if person:
+            PEOPLE.append(person)
+            print("INSERITI:")
+            for i, p in enumerate(PEOPLE):
+                print("{}. {name} da {city}: genfibo {genfibo}".format(i, **p))
+        else:
+            break
+
+if __name__ == "__main__":
+    main()    
