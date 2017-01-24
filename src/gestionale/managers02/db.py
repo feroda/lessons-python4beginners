@@ -39,7 +39,6 @@ class SqliteDBManager(BaseDBManager):
         self._connect()
         cu = self.conn.cursor()
         cu.execute("CREATE TABLE people (name VARCHAR(64), city VARCHAR(32), salary INTEGER);")
-        self.conn.commit()
 
     def _connect(self):
         self.conn = sqlite3.connect(self.settings["name"])
@@ -77,7 +76,3 @@ class SqliteDBManager(BaseDBManager):
         cu = self.conn.cursor()
         cu.execute("SELECT * FROM people")
         return cu.fetchall()
-
-
-
-
