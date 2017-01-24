@@ -4,6 +4,8 @@ Questo e' un gestionale delle persone che hanno conigli.
 """
 import codecs
 
+import export_manager as emanager
+
 def export_repr_all(people, fname="export.txt"):
     with codecs.open(fname, encoding="utf-8", mode="w+") as f:
         f.write(repr(people))
@@ -58,6 +60,18 @@ def main():
                 print("{}. {name} da {city}: genfibo {genfibo}".format(i, **p))
         else:
             break
+
+    exporter_name = raw_input("In che formato li vuoi esportare? ")
+
+    factory = emanager.ExporterFactory()
+
+    try:    
+        exporter = factory.get_instance(exporter_name)
+    except KeyError:
+        print("Formati di export supportati: {}".format(factory.supported))
+    else:
+        exporter.do_export(PEOPLE)
+
 
 if __name__ == "__main__":
     main()    
