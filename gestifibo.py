@@ -1,8 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Questo e' gestionale delle persone che hanno conigli.
+Questo e' un gestionale delle persone che hanno conigli.
 """
-import fibo
+import codecs
+
+def export_repr_all(people, fname="export.txt"):
+    with codecs.open(fname, encoding="utf-8", mode="w+") as f:
+        f.write(repr(people))
+
+
+def export_repr_line_by_line(people, fname="export.txt"):
+    with codecs.open(fname, encoding="utf-8", mode="w+") as f:
+        f.writelines(people)
 
 
 def ask_for_person():
