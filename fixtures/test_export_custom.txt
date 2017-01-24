@@ -1,0 +1,2 @@
+n:Gianni, c:Napoli, s:3000, g:5
+n:Fabiòòòò, c:Ascoli, s:300, g:8

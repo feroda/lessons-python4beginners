@@ -1,0 +1,1 @@
+{'salary': 3000, 'city': 'Napoli', 'name': 'Gianni', 'genfibo': 5}{'salary': 300, 'city': 'Ascoli', 'name': u'Fabi\xf2\xf2\xf2\xf2', 'genfibo': 8}

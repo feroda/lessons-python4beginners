@@ -8,10 +8,18 @@ def export_repr_all(people, fname="export.txt"):
     with codecs.open(fname, encoding="utf-8", mode="w+") as f:
         f.write(repr(people))
 
-
 def export_repr_line_by_line(people, fname="export.txt"):
+
+    all_reprs = [ repr(x) for x in people ]
     with codecs.open(fname, encoding="utf-8", mode="w+") as f:
-        f.writelines(people)
+        f.writelines(all_reprs)
+
+def export_custom_line_by_line(people, fname="export.txt",
+                               fmt=u"n:{name}, c:{city}, s:{salary}, g:{genfibo}\n"):
+
+    all_reprs = [fmt.format(**x) for x in people]
+    with codecs.open(fname, encoding="utf-8", mode="w+") as f:
+        f.writelines(all_reprs)
 
 
 def ask_for_person():

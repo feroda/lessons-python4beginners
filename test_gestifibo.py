@@ -21,8 +21,7 @@ class TestGestiFibo(unittest.TestCase):
     #    print("fine test")
 
     def test_export_repr_all(self):
-        # content = u""
-
+        
         f, fname = tempfile.mkstemp()
         gestifibo.export_repr_all(self.p, fname=fname)
         with codecs.open(fname, "rb") as f:
@@ -33,9 +32,27 @@ class TestGestiFibo(unittest.TestCase):
 
     def test_export_repr_line_by_line(self):
         # content = u""
+
+        f, fname = tempfile.mkstemp()
+        gestifibo.export_repr_line_by_line(self.p, fname=fname)
+        with codecs.open(fname, "rb") as f:
+            exported_content = f.read()
         with codecs.open("fixtures/test_export_lbl.txt", "rb") as f:
             content = f.read()
-        self.assertEqual(gestifibo.export_repr_line_by_line(self.p), content)
+        self.assertEqual(exported_content, content)
+
+    def test_export_custom_line_by_line(self):
+        # content = u""
+
+        f, fname = tempfile.mkstemp()
+        gestifibo.export_custom_line_by_line(self.p, fname=fname)
+        with codecs.open(fname, "rb") as f:
+            exported_content = [x.strip() for x in f.readlines()]
+        with codecs.open("fixtures/test_export_custom.txt", "rb") as f:
+            content = [x.strip() for x in f.readlines()]
+
+        self.assertEqual(exported_content, content)
+
 
 if __name__ == '__main__':
     unittest.main()
