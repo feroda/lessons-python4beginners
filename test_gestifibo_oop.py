@@ -3,12 +3,16 @@ import unittest
 import codecs
 import tempfile
 import json
+
+import decimal
+
 import export_manager as emanager
+from people_manager import Person
 
 class TestGestiFiboOOP(unittest.TestCase):
        
     def setUp(self):
-        self.p = [
+        self.p_old = [
             {"name": "Gianni", "city": "Napoli", "salary": 3000, "genfibo": 5},
             # {"name": "Simone", "city": "Pesaro", "salary": 3300, "genfibo": 7},
             # {"name": "Gabriele", "city": "Faenza", "salary": 2900, "genfibo": 12},
@@ -16,6 +20,11 @@ class TestGestiFiboOOP(unittest.TestCase):
             # {"name": "Andrea", "city": "Ancona", "salary": 200, "genfibo": 32},
             # {"name": "Davide", "city": "Rimini", "salary": 2300, "genfibo": 1},
         ]
+
+        self.p = []
+        for x in self.p_old:
+            person = Person(x)
+            self.p.append(person)
 
     # def tearDown(self):
     #    print("fine test")

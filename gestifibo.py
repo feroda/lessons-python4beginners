@@ -5,6 +5,7 @@ Questo e' un gestionale delle persone che hanno conigli.
 import codecs
 
 import export_manager as emanager
+from people_manager import Person
 
 def export_repr_all(people, fname="export.txt"):
     with codecs.open(fname, encoding="utf-8", mode="w+") as f:
@@ -25,8 +26,8 @@ def export_custom_line_by_line(people, fname="export.txt",
 
 
 def ask_for_person():
-    p = {}
-    for attr in [u"Città", 'name', 'city', 'salary', 'genfibo']:
+    p = Person()
+    for attr in ['name', 'city', 'salary', 'genfibo']:
         ain = u"Inserisci {}: ".format(attr)
         value = raw_input(ain.encode("utf-8"))
         if value == "STOP":

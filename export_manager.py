@@ -3,6 +3,7 @@ import codecs
 import json
 import csv
 
+
 class BaseExporter(object):
     
     def __init__(self, f=None):
@@ -54,6 +55,7 @@ class CsvExporter(BaseExporter):
         
         for row in people:
             writer.writerow(row)
+
 
 class ExporterFactory(object):
     
