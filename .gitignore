@@ -3,3 +3,4 @@ t
 *.pyo
 .cache
 .vscode
+.ipynb_checkpoints
