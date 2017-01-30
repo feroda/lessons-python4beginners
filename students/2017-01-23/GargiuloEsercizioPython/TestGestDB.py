@@ -5,7 +5,11 @@ import sqlite3 as db
 from GestDB import ObjGestDB
 
 class TestGestioneDB(unittest.TestCase):
-       
+    # Questo testcase è un po' troppo debole secondo me,
+    # potresti salvarti il file json esportato da questa struttura che imposti nel setUp
+    # poi effettui un test che esegua l'inizializzazione del db e lo esporti
+    # e verifichi che sia uguale a quello che hai precedentemente salvato.
+
     def setUp(self):
         self.dbrows = [
             {"name": "Gianni", "city": "Napoli", "salary": 3000, "genfibo": 5,
@@ -16,13 +20,13 @@ class TestGestioneDB(unittest.TestCase):
 
 
     def test_saveDB(self):
-        gestidb = ObjGestDB("C:/DBPersone.db")
-        
+        gestidb = ObjGestDB("DBPersone.db")
+
         self.assertTrue(gestidb.CreaDB())
         self.assertTrue(gestidb.RegistraDB(self.dbrows))
-        
+
         gestidb.CloseDB()
-        
+
 
 if __name__ == '__main__':
     unittest.main()
